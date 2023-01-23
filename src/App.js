@@ -11,24 +11,7 @@ function App() {
   // useEffect(()=>{
   //   document.addEventListener('keydown', detectKeyDown, true)
   // }, [])
-  function onSliderKeyUp(event)
-  {
-
-  
-      switch(event.code)
-   {
-          case RIGHT_ARROW_KEY:
-            next();
-          break;
-
-          case LEFT_ARROW_KEY:
-          previous();
-          break;
-          default:
-          break;
-      }
-  }
-  document.addEventListener('keyup', onSliderKeyUp);
+ 
 
 const [imageactuel, setImageactuel] = useState(1);
 const images=[
@@ -78,6 +61,25 @@ const target = (variable, i)=>{
 
 }
 
+
+function onSliderKeyUp(event)
+{
+
+
+    switch(event.code)
+ {
+        case RIGHT_ARROW_KEY:
+          next();
+        break;
+
+        case LEFT_ARROW_KEY:
+        previous();
+        break;
+        default:
+        break;
+    }
+}
+document.addEventListener('keyup', onSliderKeyUp);
 // const detectKeyDown = (e) =>{
 //   console.log(e.key)
 //   if(e.key === 'ArrowRight'){
