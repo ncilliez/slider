@@ -3,16 +3,11 @@ import {useState} from "react";
 import Bouton from "./compenents/bouton";
 import Puces from "./compenents/puces";
 import './Style.css';
-// import {useEffect} from 'react';
 
 function App() {
-  const LEFT_ARROW_KEY = 'ArrowLeft';
-  const RIGHT_ARROW_KEY = 'ArrowRight';
-  // useEffect(()=>{
-  //   document.addEventListener('keydown', detectKeyDown, true)
-  // }, [])
- 
 
+const LEFT_ARROW_KEY = 'ArrowLeft';
+const RIGHT_ARROW_KEY = 'ArrowRight';
 const [imageactuel, setImageactuel] = useState(1);
 const images=[
     {id: 1, txt: '1.jpg'},
@@ -23,12 +18,8 @@ const images=[
     {id: 6, txt: '6.jpg'}
 ];
 
-
-
-
-
-
 const next = () =>{
+
   setTimeout(() => {
     if(imageactuel !== images.length){
       setImageactuel(imageactuel+1);
@@ -37,20 +28,21 @@ const next = () =>{
       setImageactuel(1);
     }
   }, "300");
+
 };
 
 const previous = () =>{ 
+
   setTimeout(() => { 
     if(imageactuel === 1){
-      setImageactuel(images.length);
-      
+      setImageactuel(images.length);    
     }
     else{
       setImageactuel(imageactuel-1);
     }
   }, "300");
-};
 
+};
 
 const target = (variable, i)=>{
 
@@ -61,36 +53,23 @@ const target = (variable, i)=>{
 
 }
 
-
 function onSliderKeyUp(event)
 {
 
+  switch(event.code)
+  {
+    case RIGHT_ARROW_KEY:
+      next();
+    break;
 
-    switch(event.code)
- {
-        case RIGHT_ARROW_KEY:
-          next();
-        break;
+    case LEFT_ARROW_KEY:
+      previous();
+    break;
+    default:break;
+  }
 
-        case LEFT_ARROW_KEY:
-        previous();
-        break;
-        default:
-        break;
-    }
 }
 document.addEventListener('keyup', onSliderKeyUp);
-// const detectKeyDown = (e) =>{
-//   console.log(e.key)
-//   if(e.key === 'ArrowRight'){
-    
-//     next();
-//   }
-//   else if(e.key === 'ArrowLeft'){
-//     previous();
-//   }
-// }
-
 
 return <div className='slider'>
 
@@ -98,7 +77,6 @@ return <div className='slider'>
           <img src={`images/${imageactuel}.jpg`} alt={images[imageactuel-1].txt} />
         </figure>
         
-
         <div className='mesboutons'>
           <Bouton unbtn='previous' evenement={previous} icon='fa-solid fa-arrow-left'/>
           <Bouton unbtn='next' evenement={next} icon='fa-solid fa-arrow-right'/>
@@ -115,7 +93,6 @@ return <div className='slider'>
         </div>
 
       </div>;
-
 }
 
 
