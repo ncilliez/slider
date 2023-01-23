@@ -1,3 +1,4 @@
+import React from "react";
 import {useState} from "react";
 import Bouton from "./compenents/bouton";
 import Puces from "./compenents/puces";
@@ -17,25 +18,27 @@ const images=[
 
 const next = () =>{
   setTimeout(() => {
-    if(imageactuel !== 6){
+    if(imageactuel !== images.length){
       setImageactuel(imageactuel+1);
     }
     else{
       setImageactuel(1);
     }
-  }, "500");
+  }, "300");
 };
+
+
 
 const previous = () =>{ 
   setTimeout(() => { 
     if(imageactuel === 1){
-      setImageactuel(6);
+      setImageactuel(images.length);
       
     }
     else{
       setImageactuel(imageactuel-1);
     }
-  }, "500");
+  }, "300");
 };
 
 
@@ -44,7 +47,7 @@ const target = (variable, i)=>{
   setTimeout(() => { 
     variable = i+1;
     setImageactuel(variable);
-  }, "500");
+  }, "300");
 
 }
 
