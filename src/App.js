@@ -6,6 +6,9 @@ import './Style.css';
 
 function App() {
 
+
+
+
 const [imageactuel, setImageactuel] = useState(1);
 const images=[
     {id: 1, txt: '1.jpg'},
@@ -16,6 +19,11 @@ const images=[
     {id: 6, txt: '6.jpg'}
 ];
 
+
+
+
+
+
 const next = () =>{
   setTimeout(() => {
     if(imageactuel !== images.length){
@@ -25,6 +33,8 @@ const next = () =>{
       setImageactuel(1);
     }
   }, "300");
+
+ 
 };
 
 
@@ -51,6 +61,7 @@ const target = (variable, i)=>{
 
 }
 
+
 return <div className='slider'>
 
         <figure>
@@ -76,4 +87,6 @@ return <div className='slider'>
       </div>;
 
 }
+
+
 export default App;
