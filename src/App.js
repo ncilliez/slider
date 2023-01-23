@@ -3,11 +3,32 @@ import {useState} from "react";
 import Bouton from "./compenents/bouton";
 import Puces from "./compenents/puces";
 import './Style.css';
+// import {useEffect} from 'react';
 
 function App() {
+  const LEFT_ARROW_KEY = 'ArrowLeft';
+  const RIGHT_ARROW_KEY = 'ArrowRight';
+  // useEffect(()=>{
+  //   document.addEventListener('keydown', detectKeyDown, true)
+  // }, [])
+  function onSliderKeyUp(event)
+  {
 
+  
+      switch(event.code)
+   {
+          case RIGHT_ARROW_KEY:
+            next();
+          break;
 
-
+          case LEFT_ARROW_KEY:
+          previous();
+          break;
+          default:
+          break;
+      }
+  }
+  document.addEventListener('keyup', onSliderKeyUp);
 
 const [imageactuel, setImageactuel] = useState(1);
 const images=[
@@ -33,11 +54,7 @@ const next = () =>{
       setImageactuel(1);
     }
   }, "300");
-
- 
 };
-
-
 
 const previous = () =>{ 
   setTimeout(() => { 
@@ -60,6 +77,17 @@ const target = (variable, i)=>{
   }, "300");
 
 }
+
+// const detectKeyDown = (e) =>{
+//   console.log(e.key)
+//   if(e.key === 'ArrowRight'){
+    
+//     next();
+//   }
+//   else if(e.key === 'ArrowLeft'){
+//     previous();
+//   }
+// }
 
 
 return <div className='slider'>
