@@ -86,7 +86,7 @@ return <div className='slider'>
           <ul>
             {images.map((uneimage, i) => (
               
-              <Puces cuneimage={uneimage} cimageactuel={imageactuel} ctarget={target} ci={i} />
+              <Puces key={i} cuneimage={uneimage} cimageactuel={imageactuel} ctarget={target} ci={i} />
       
             ))}      
           </ul>
