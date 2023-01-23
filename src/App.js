@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import Bouton from "./compenents/bouton";
+import Puces from "./compenents/puces";
+import './Style.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const [imageactuel, setImageactuel] = useState(1);
+const images=[
+    {id: 1, txt: '1.jpg'},
+    {id: 2, txt: '2.jpg'},
+    {id: 3, txt: '3.jpg'},
+    {id: 4, txt: '4.jpg'},
+    {id: 5, txt: '5.jpg'},
+    {id: 6, txt: '6.jpg'}
+];
+
+const next = () =>{
+  setTimeout(() => {
+    if(imageactuel !== 6){
+      setImageactuel(imageactuel+1);
+    }
+    else{
+      setImageactuel(1);
+    }
+  }, "500");
+};
+
+const previous = () =>{ 
+  setTimeout(() => { 
+    if(imageactuel === 1){
+      setImageactuel(6);
+      
+    }
+    else{
+      setImageactuel(imageactuel-1);
+    }
+  }, "500");
+};
+
+
+const target = (variable, i)=>{
+
+  setTimeout(() => { 
+    variable = i+1;
+    setImageactuel(variable);
+  }, "500");
+
 }
 
+return <div className='slider'>
+
+        <figure>
+          <img src={`images/${imageactuel}.jpg`} alt={images[imageactuel-1].txt} />
+        </figure>
+        
+
+        <div className='mesboutons'>
+          <Bouton unbtn='previous' evenement={previous} icon='fa-solid fa-arrow-left'/>
+          <Bouton unbtn='next' evenement={next} icon='fa-solid fa-arrow-right'/>
+        </div>
+
+        <div className="puces">
+          <ul>
+            {images.map((uneimage, i) => (
+              
+              <Puces cuneimage={uneimage} cimageactuel={imageactuel} ctarget={target} ci={i} />
+      
+            ))}      
+          </ul>
+        </div>
+
+      </div>;
+
+}
 export default App;
